@@ -1,4 +1,4 @@
-<div class="btn-group" role="group" aria-label="Basic example">
+<div class="btn-group w-100" role="group" aria-label="Basic example">
   <button
     type="button"
     class="btn btn-primary"
@@ -21,8 +21,10 @@
     Scoop
   </button>
 </div>
+<hr />
+<ng-container *ngIf="data && data.items.length"> test </ng-container>
 
-<ng-container *ngIf="data && data.length">
+<!-- <ng-container *ngIf="data && data.length">
   <ng-container *ngFor="let item of data">
     <ng-container
       *ngIf="item.type === 0"
@@ -39,23 +41,20 @@
       [ngTemplateOutlet]="filesTemplate"
       [ngTemplateOutletContext]="{ item: item }"
     ></ng-container>
-  </ng-container>
-  <!-- No Result -->
+  </ng-container> 
   <ng-container *ngIf="data.length === 0">
     <div class="text-muted d-none">No record found</div>
-  </ng-container>
-  <!--end::Wrapper-->
-</ng-container>
+  </ng-container> 
+</ng-container> -->
 
-<ng-template #documentsTemplate let-item="item">
+<!-- <ng-template #documentsTemplate let-item="item">
   <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
     Documents
   </div>
   <div class="mb-10">
     <ng-container *ngFor="let el of item.items">
       <div class="d-flex align-items-center flex-grow-1 mb-2">
-        <div class="symbol symbol-45 bg-transparent flex-shrink-0">
-          <!-- <span class="icon-svg" [inlineSVG]="el.svgPath"></span> -->
+        <div class="symbol symbol-45 bg-transparent flex-shrink-0"> 
           <img [src]="el.svgPath" alt="" />
         </div>
         <div class="d-flex flex-column ml-3 mt-2 mb-2">
@@ -69,9 +68,9 @@
       </div>
     </ng-container>
   </div>
-</ng-template>
+</ng-template> -->
 
-<ng-template #membersTemplate let-item="item">
+<!-- <ng-template #membersTemplate let-item="item">
   <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
     Members
   </div>
@@ -95,8 +94,8 @@
       </div>
     </ng-container>
   </div>
-</ng-template>
-
+</ng-template> -->
+<!-- 
 <ng-template #filesTemplate let-item="item">
   <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
     Files
@@ -120,4 +119,4 @@
       </div>
     </ng-container>
   </div>
-</ng-template>
+</ng-template> -->

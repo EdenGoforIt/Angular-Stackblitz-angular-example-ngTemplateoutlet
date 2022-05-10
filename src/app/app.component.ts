@@ -6,7 +6,7 @@ export enum MediaType {
   scoop,
 }
 
-export class Article {
+export class Articles {
   type: MediaType;
   items: { title: string; description: string }[];
 }
@@ -20,7 +20,19 @@ export class AppComponent {
   //to use enum in html
   mediaType: typeof MediaType = MediaType;
   //data initialization
-  data: Article[] = [];
+  data: Articles = {
+    type: null,
+    items: [
+      {
+        title: 'Angular is Awesome',
+        description: 'Angular is one of the most famous frontend framework',
+      },
+      {
+        title: 'Angular is better than React? ...',
+        description: 'It all comes down to the business needs',
+      },
+    ],
+  };
   //type selected from three buttons
   typeSelected: MediaType;
 
@@ -28,6 +40,6 @@ export class AppComponent {
    * Change the view based on the medium type selected
    */
   onMediumChanged(type: MediaType) {
-    this.typeSelected = type;
+    this.data.type = type;
   }
 }
