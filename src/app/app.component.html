@@ -2,38 +2,38 @@
   <button
     type="button"
     class="btn btn-primary"
-    (click)="onMediumChanged(mediaType.medium)"
+    (click)="onMediaChanged(mediaType.medium)"
   >
     Medium
   </button>
   <button
     type="button"
     class="btn btn-sucess"
-    (click)="onMediumChanged(mediaType.linkedIn)"
+    (click)="onMediaChanged(mediaType.linkedIn)"
   >
     LinkedIn
   </button>
   <button
     type="button"
     class="btn btn-warning"
-    (click)="onMediumChanged(mediaType.scoop)"
+    (click)="onMediaChanged(mediaType.scoop)"
   >
     Scoop
   </button>
 </div>
 <hr />
-<ng-container *ngIf="data && data.items.length">
+<ng-container *ngIf="data && data.contents.length">
   <!-- medium -->
   <ng-container
     *ngIf="data.type === mediaType.medium"
     [ngTemplateOutlet]="mediumPlatform"
-    [ngTemplateOutletContext]="{ items: data.items }"
+    [ngTemplateOutletContext]="{ contents: data.contents }"
   >
   </ng-container>
   <!-- linked In -->
   <ng-container *ngIf="data.type === mediaType.linkedIn">
     <ng-container
-      *ngTemplateOutlet="linkedInPlatform; context: { items: data.items }"
+      *ngTemplateOutlet="linkedInPlatform; context: { contents: data.contents }"
     >
     </ng-container>
   </ng-container>
@@ -41,16 +41,16 @@
   <ng-container
     *ngIf="data.type === mediaType.scoop"
     [ngTemplateOutlet]="scoopPlatform"
-    [ngTemplateOutletContext]="{ items: data.items }"
+    [ngTemplateOutletContext]="{ contents: data.contents }"
   >
   </ng-container>
 </ng-container>
 
-<ng-template #mediumPlatform let-items="items">
+<ng-template #mediumPlatform let-contents="contents">
   <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Medium</h1>
   <div class="medium mb-10 border border-primary">
-    <ng-container *ngFor="let el of items">
-      <div class="d-flex align-items-center flex-grow-1 mb-2">
+    <ng-container *ngFor="let el of contents">
+      <div class="d-flex align-contents-center flex-grow-1 mb-2">
         <div class="d-flex flex-column ml-3 mt-2 mb-2">
           <a
             href="#"
@@ -67,29 +67,26 @@
   </div>
 </ng-template>
 
-<ng-template #linkedInPlatform let-items="items">
+<ng-template #linkedInPlatform let-contents="contents">
   <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Linked In</h1>
-  <div class="medium mb-10">
-    <ul class="list-group" *ngFor="let el of items">
-      <li class="list-group-item">
-        <a
-          href="#"
-          class="font-weight-bold text-dark text-hover-primary bg-danger"
-        >
-          {{ el.title }}:
-        </a>
-        <span class="font-size-sm font-weight-bold text-muted bg-warning">
-          {{ el.description }}
-        </span>
-      </li>
-    </ul>
+  <div class="medium mb-10 border border-primary">
+    <ng-container *ngFor="let el of contents">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">{{ el.title }}</div>
+        <div class="card-body">
+          <p class="card-text">
+            {{ el.description }}
+          </p>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </ng-template>
 
-<ng-template #scoopPlatform let-items="items">
+<ng-template #scoopPlatform let-contents="contents">
   <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Scoop</h1>
   <div class="medium mb-10 bg-secondary">
-    <ul class="list-group" *ngFor="let el of items">
+    <ul class="list-group" *ngFor="let el of contents">
       <li class="list-group-item">
         <img [src]="el.img" alt="image" width="50" />
         <a

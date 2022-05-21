@@ -1,12 +1,10 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MediaType, Article } from './article';
-
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-dirty',
+  templateUrl: './dirty.component.html',
 })
-export class AppComponent {
+export class DirtyComponent {
   //to use enum in html
   mediaType: typeof MediaType = MediaType;
   //data initialization

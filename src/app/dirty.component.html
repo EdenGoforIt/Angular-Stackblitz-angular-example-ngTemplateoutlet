@@ -1,0 +1,85 @@
+<div class="btn-group w-100" role="group" aria-label="Basic example">
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onMediaChanged(mediaType.medium)"
+  >
+    Medium
+  </button>
+  <button
+    type="button"
+    class="btn btn-sucess"
+    (click)="onMediaChanged(mediaType.linkedIn)"
+  >
+    LinkedIn
+  </button>
+  <button
+    type="button"
+    class="btn btn-warning"
+    (click)="onMediaChanged(mediaType.scoop)"
+  >
+    Scoop
+  </button>
+</div>
+<hr />
+<ng-container *ngIf="data && data.contents.length">
+  <!-- medium -->
+  <ng-container *ngIf="data.type === mediaType.medium">
+    <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Medium</h1>
+    <div class="medium mb-10 border border-primary">
+      <ng-container *ngFor="let el of data.contents">
+        <div class="d-flex align-contents-center flex-grow-1 mb-2">
+          <div class="d-flex flex-column ml-3 mt-2 mb-2">
+            <a
+              href="#"
+              class="font-weight-bold text-dark text-hover-primary bg-danger"
+            >
+              {{ el.title }}
+            </a>
+            <span class="font-size-sm font-weight-bold text-muted bg-warning">
+              {{ el.description }}
+            </span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <!-- linked In -->
+  <ng-container *ngIf="data.type === mediaType.linkedIn">
+    <h1 class="text-primary font-weight-bolder text-uppercase mb-2">
+      Linked In
+    </h1>
+    <div class="medium mb-10 border border-primary">
+      <ng-container *ngFor="let el of data.contents">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">{{ el.title }}</div>
+          <div class="card-body">
+            <p class="card-text">
+              {{ el.description }}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <!-- scoop -->
+  <ng-container *ngIf="data.type === mediaType.scoop">
+    <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Scoop</h1>
+    <div class="medium mb-10 bg-secondary">
+      <ul class="list-group" *ngFor="let el of data.contents">
+        <li class="list-group-item">
+          <img [src]="el.img" alt="image" width="50" />
+          <a
+            href="#"
+            class="font-weight-bold text-dark text-hover-primary bg-danger"
+          >
+            {{ el.title }}:
+          </a>
+          <span class="font-size-sm font-weight-bold text-muted bg-warning">
+            {{ el.description }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</ng-container>
