@@ -23,104 +23,85 @@
 </div>
 <hr />
 <ng-container *ngIf="data && data.items.length">
-  <ng-container *ngIf="data.type === mediaType.medium"> Medium </ng-container>
-  <ng-container *ngIf="data.type === mediaType.linkedIn">LinkedIn</ng-container>
-  <ng-container *ngIf="data.type === mediaType.scoop">Scoop</ng-container>
+  <!-- medium -->
+  <ng-container
+    *ngIf="data.type === mediaType.medium"
+    [ngTemplateOutlet]="mediumPlatform"
+    [ngTemplateOutletContext]="{ items: data.items }"
+  >
+  </ng-container>
+  <!-- linked In -->
+  <ng-container *ngIf="data.type === mediaType.linkedIn">
+    <ng-container
+      *ngTemplateOutlet="linkedInPlatform; context: { items: data.items }"
+    >
+    </ng-container>
+  </ng-container>
+  <!-- scoop -->
+  <ng-container
+    *ngIf="data.type === mediaType.scoop"
+    [ngTemplateOutlet]="scoopPlatform"
+    [ngTemplateOutletContext]="{ items: data.items }"
+  >
+  </ng-container>
 </ng-container>
 
-<!-- <ng-container *ngIf="data && data.length">
-  <ng-container *ngFor="let item of data">
-    <ng-container
-      *ngIf="item.type === 0"
-      [ngTemplateOutlet]="documentsTemplate"
-      [ngTemplateOutletContext]="{ item: item }"
-    ></ng-container>
-    <ng-container
-      *ngIf="item.type === 1"
-      [ngTemplateOutlet]="membersTemplate"
-      [ngTemplateOutletContext]="{ item: item }"
-    ></ng-container>
-    <ng-container
-      *ngIf="item.type === 2"
-      [ngTemplateOutlet]="filesTemplate"
-      [ngTemplateOutletContext]="{ item: item }"
-    ></ng-container>
-  </ng-container> 
-  <ng-container *ngIf="data.length === 0">
-    <div class="text-muted d-none">No record found</div>
-  </ng-container> 
-</ng-container> -->
+<ng-template #mediumPlatform let-items="items">
+  <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Medium</h1>
+  <div class="medium mb-10 border border-primary">
+    <ng-container *ngFor="let el of items">
+      <div class="d-flex align-items-center flex-grow-1 mb-2">
+        <div class="d-flex flex-column ml-3 mt-2 mb-2">
+          <a
+            href="#"
+            class="font-weight-bold text-dark text-hover-primary bg-danger"
+          >
+            {{ el.title }}
+          </a>
+          <span class="font-size-sm font-weight-bold text-muted bg-warning">
+            {{ el.description }}
+          </span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
 
-<!-- <ng-template #documentsTemplate let-item="item">
-  <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-    Documents
+<ng-template #linkedInPlatform let-items="items">
+  <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Linked In</h1>
+  <div class="medium mb-10">
+    <ul class="list-group" *ngFor="let el of items">
+      <li class="list-group-item">
+        <a
+          href="#"
+          class="font-weight-bold text-dark text-hover-primary bg-danger"
+        >
+          {{ el.title }}:
+        </a>
+        <span class="font-size-sm font-weight-bold text-muted bg-warning">
+          {{ el.description }}
+        </span>
+      </li>
+    </ul>
   </div>
-  <div class="mb-10">
-    <ng-container *ngFor="let el of item.items">
-      <div class="d-flex align-items-center flex-grow-1 mb-2">
-        <div class="symbol symbol-45 bg-transparent flex-shrink-0"> 
-          <img [src]="el.svgPath" alt="" />
-        </div>
-        <div class="d-flex flex-column ml-3 mt-2 mb-2">
-          <a href="#" class="font-weight-bold text-dark text-hover-primary">
-            {{ el.title }}
-          </a>
-          <span class="font-size-sm font-weight-bold text-muted">
-            {{ el.description }}
-          </span>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</ng-template> -->
+</ng-template>
 
-<!-- <ng-template #membersTemplate let-item="item">
-  <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-    Members
+<ng-template #scoopPlatform let-items="items">
+  <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Scoop</h1>
+  <div class="medium mb-10 bg-secondary">
+    <ul class="list-group" *ngFor="let el of items">
+      <li class="list-group-item">
+        <img [src]="el.img" alt="image" width="50" />
+        <a
+          href="#"
+          class="font-weight-bold text-dark text-hover-primary bg-danger"
+        >
+          {{ el.title }}:
+        </a>
+        <span class="font-size-sm font-weight-bold text-muted bg-warning">
+          {{ el.description }}
+        </span>
+      </li>
+    </ul>
   </div>
-  <div class="mb-10">
-    <ng-container *ngFor="let el of item.items">
-      <div class="d-flex align-items-center flex-grow-1 mb-2">
-        <div class="symbol symbol-45 symbol-circle flex-shrink-0">
-          <div
-            class="symbol-label"
-            [ngStyle]="{ 'background-image': 'url(' + el.imgPath + ')' }"
-          ></div>
-        </div>
-        <div class="d-flex flex-column ml-3 mt-2 mb-2">
-          <a href="#" class="font-weight-bold text-dark text-hover-primary">
-            {{ el.title }}
-          </a>
-          <span class="font-size-sm font-weight-bold text-muted">
-            {{ el.description }}
-          </span>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</ng-template> -->
-<!-- 
-<ng-template #filesTemplate let-item="item">
-  <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-    Files
-  </div>
-  <div class="mb-10">
-    <ng-container *ngFor="let el of item.items">
-      <div class="d-flex align-items-center flex-grow-1 mb-2">
-        <div class="symbol symbol-45 symbol-circle flex-shrink-0">
-          <div class="symbol-label">
-            <i [ngClass]="el.iconClasses"></i>
-          </div>
-        </div>
-        <div class="d-flex flex-column ml-3 mt-2 mb-2">
-          <a href="#" class="font-weight-bold text-dark text-hover-primary">
-            {{ el.title }}
-          </a>
-          <span class="font-size-sm font-weight-bold text-muted">
-            {{ el.description }}
-          </span>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</ng-template> -->
+</ng-template>
