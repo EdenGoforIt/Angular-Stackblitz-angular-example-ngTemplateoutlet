@@ -29,17 +29,16 @@ import { MediaType } from './article';
  </div>
 
   <!-- Media starts here -->
-  <app-scoop></app-scoop>
+  <app-scoop *ngIf="selectedType === mediaType.scoop"></app-scoop>
+  <app-medium  *ngIf="selectedType === mediaType.medium"></app-medium>
+  <app-linkedIn  *ngIf="selectedType === mediaType.linkedIn"></app-linkedIn>
   `,
 })
-
-// <app-medium></app-medium>
-// <app-linkedIn></app-linkedIn>
 export class PlatformComponent {
   mediaType: typeof MediaType = MediaType;
+  selectedType: MediaType = null;
 
   onMediaChanged(type: MediaType) {
-    console.log(type);
-    // this.data.type = type;
+    this.selectedType = type;
   }
 }

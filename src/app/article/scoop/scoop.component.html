@@ -1,6 +1,22 @@
 <!-- We are sending this template to the app-article template  -->
-<ng-template #scoopTemplate>
-  <h1 class="text-center">Scoop</h1>
+<ng-template #scoopTemplate let-items="contents">
+  <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Scoop</h1>
+  <div class="medium mb-10 bg-secondary">
+    <ul class="list-group" *ngFor="let el of contents">
+      <li class="list-group-item">
+        <img [src]="el.img" alt="image" width="50" />
+        <a
+          href="#"
+          class="font-weight-bold text-dark text-hover-primary bg-danger"
+        >
+          {{ el.title }}:
+        </a>
+        <span class="font-size-sm font-weight-bold text-muted bg-warning">
+          {{ el.description }}
+        </span>
+      </li>
+    </ul>
+  </div>
 </ng-template>
 
 <app-article [contents]="contents" [template]="scoopTemplate"></app-article>

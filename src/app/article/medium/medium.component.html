@@ -1,1 +1,17 @@
-<h1>Miedum</h1>
+<ng-template #mediumTemplate let-items="contents">
+  <h1 class="text-primary font-weight-bolder text-uppercase mb-2">Linked In</h1>
+  <div class="medium mb-10 border border-primary">
+    <ng-container *ngFor="let el of contents">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">{{ el.title }}</div>
+        <div class="card-body">
+          <p class="card-text">
+            {{ el.description }}
+          </p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<app-article [contents]="contents" [template]="mediumTemplate"></app-article>
