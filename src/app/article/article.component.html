@@ -1,30 +1,4 @@
-<h1 class="text-center">Platform</h1>
-<hr />
-<div class="btn-group w-100" role="group" aria-label="Basic example">
-  <button
-    type="button"
-    class="btn btn-primary"
-    (click)="onMediaChanged(mediaType.medium)"
-  >
-    Medium
-  </button>
-  <button
-    type="button"
-    class="btn btn-sucess"
-    (click)="onMediaChanged(mediaType.linkedIn)"
-  >
-    LinkedIn
-  </button>
-  <button
-    type="button"
-    class="btn btn-warning"
-    (click)="onMediaChanged(mediaType.scoop)"
-  >
-    Scoop
-  </button>
-</div>
-<hr />
-<ng-container *ngIf="items?.length">
+<ng-container *ngIf="contents?.length">
   <ng-container [ngTemplateOutlet]="templateRef"> </ng-container>
   <!-- medium -->
   <!-- <ng-container

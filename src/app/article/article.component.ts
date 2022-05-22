@@ -7,10 +7,10 @@ import { MediaType } from '../article';
   templateUrl: './article.component.html',
 })
 export class ArticleComponent {
-  @Input() items: { title: string; description: string; img: string }[];
+  @Input() contents: { title: string; description: string; img: string }[];
   @Input('template') templateRef: TemplateRef<any>;
+  @Input() typeSelected: MediaType;
   //to use enum in html
-  mediaType: typeof MediaType = MediaType;
   //data initialization
   // data: Article = {
   //   type: null,
@@ -28,7 +28,6 @@ export class ArticleComponent {
   //   ],
   // };
   //type selected from three buttons
-  typeSelected: MediaType;
 
   ngOnInit() {
     // console.log(this.items);
@@ -36,13 +35,9 @@ export class ArticleComponent {
   }
   ngAfterViewInit(): void {
     console.log(this.templateRef);
-    console.log(this.items);
+    console.log(this.contents);
   }
   /**
    * Change the view based on the medium type selected
    */
-  onMediaChanged(type: MediaType) {
-    console.log(type);
-    // this.data.type = type;
-  }
 }

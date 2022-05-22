@@ -1,5 +1,6 @@
+<!-- We are sending this template to the app-article template  -->
 <ng-template #scoopTemplate>
-  <h1>Scoop</h1>
+  <h1 class="text-center">Scoop</h1>
 </ng-template>
 
-<app-platform [items]="data.contents" [template]="scoopTemplate"></app-platform>
+<app-article [contents]="contents" [template]="scoopTemplate"></app-article>
