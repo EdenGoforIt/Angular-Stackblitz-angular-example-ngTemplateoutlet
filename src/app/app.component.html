@@ -32,14 +32,17 @@
   </ng-container>
   <!-- linked In -->
   <ng-container *ngIf="data.type === mediaType.linkedIn">
-    <ng-container  *ngTemplateOutlet="linkedInPlatform; context: { contents: data.contents }" >
+    <ng-container
+      *ngTemplateOutlet="linkedInPlatform; context: { contents: data.contents }"
+    >
     </ng-container>
   </ng-container>
   <!-- scoop -->
   <ng-container
     *ngIf="data.type === mediaType.scoop"
     [ngTemplateOutlet]="scoopPlatform"
-    [ngTemplateOutletContext]="{ contents: data.contents }" >
+    [ngTemplateOutletContext]="{ contents: data.contents }"
+  >
   </ng-container>
 </ng-container>
 

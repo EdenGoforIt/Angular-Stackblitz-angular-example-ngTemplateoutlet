@@ -1,0 +1,52 @@
+<h1 class="text-center">Platform</h1>
+<hr />
+<div class="btn-group w-100" role="group" aria-label="Basic example">
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onMediaChanged(mediaType.medium)"
+  >
+    Medium
+  </button>
+  <button
+    type="button"
+    class="btn btn-sucess"
+    (click)="onMediaChanged(mediaType.linkedIn)"
+  >
+    LinkedIn
+  </button>
+  <button
+    type="button"
+    class="btn btn-warning"
+    (click)="onMediaChanged(mediaType.scoop)"
+  >
+    Scoop
+  </button>
+</div>
+<hr />
+<ng-container *ngIf="items?.length">
+  <ng-container [ngTemplateOutlet]="templateRef"> </ng-container>
+  <!-- medium -->
+  <!-- <ng-container
+    *ngIf="data.type === mediaType.medium"
+    [ngTemplateOutlet]="mediumTemplate"
+    [ngTemplateOutletContext]="{ contents: data.contents }"
+  >
+  </ng-container> -->
+
+  <!-- <ng-container *ngIf="data.type === mediaType.linkedIn">
+    <ng-container
+      *ngTemplateOutlet="linkedInPlatform; context: { contents: data.contents }"
+    >
+    </ng-container>
+  </ng-container>
+ 
+  <ng-container
+    *ngIf="data.type === mediaType.scoop"
+    [ngTemplateOutlet]="scoopPlatform"
+    [ngTemplateOutletContext]="{ contents: data.contents }"
+  >
+  </ng-container> -->
+</ng-container>
+
+<!-- <ng-tempalte #mediumTemplate let-contents="contents"> hi1</ng-tempalte> -->
