@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Article, MediaType } from '../../article';
+import { Component } from '@angular/core';
+import { MediaType } from '../../article';
 
 @Component({
   selector: 'app-scoop',

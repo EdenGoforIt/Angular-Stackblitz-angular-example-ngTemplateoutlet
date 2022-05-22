@@ -1,7 +1,4 @@
 import { Component, Input, TemplateRef } from '@angular/core';
-
-import { OnInit, AfterViewInit } from '@angular/core';
-import { MediaType } from '../article';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
